@@ -1,0 +1,8 @@
+# Rule 1: ICMP Ping Burst Detection
+alert icmp any any -> any any (msg:"ICMP Ping Burst Detected"; detection_filter:track by_src, count 5, seconds 2; sid:1000001; rev:1;)
+
+# Rule 2: Nmap TCP SYN Scan Detection
+alert tcp any any -> any any (msg:"Nmap TCP Port Scan Detected"; flags:S; sid:1000002; rev:1;)
+
+# Rule 3: Deep Packet Payload Content Inspection
+alert tcp any any -> any any (msg:"Suspicious Trigger String Found in Payload"; content:"classified_compromise"; sid:1000003; rev:1;)
